@@ -1,5 +1,12 @@
+import NavBar from "../components/NavBar"
+
 export default function index() {
     return (
-        <div>index</div>
+        <>
+            <NavBar />
+            <div className="h-[800px] bg-[#997035]">
+
+            </div>
+        </>
     )
 }

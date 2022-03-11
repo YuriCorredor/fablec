@@ -18,3 +18,45 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* Burguer */
+
+.myBurguer {
+  width: 36px;
+  height: 4px;
+  background-color: #2e592e;
+  border-radius: 8px;
+  transition: all .2s ease-in-out;
+}
+
+.myBurguer::before,
+.myBurguer::after {
+  content: '';
+  position: absolute;
+  width: 36px;
+  height: 4px;
+  background-color: #2e592e;
+  border-radius: 8px;
+  transition: all .2s ease-in-out;
+}
+
+.myBurguer::before {
+  transform: translateY(-8px);
+}
+
+.myBurguer::after {
+  transform: translateY(8px);
+}
+
+.menuopen .myBurguer {
+  background: rgba(0,0,0,0);
+  transform: translateX(-50px);
+}
+
+.menuopen .myBurguer::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.menuopen .myBurguer::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
