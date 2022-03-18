@@ -1,12 +1,12 @@
 import NavBar from "../components/NavBar"
+import Home from "../components/Home"
 
 export default function index() {
     return (
         <>
             <NavBar />
-            <div className="h-[800px] bg-[#997035]">
-
-            </div>
+            <Home />
+            <div className="w-full h-[5000px]"></div>
         </>
     )
 }
