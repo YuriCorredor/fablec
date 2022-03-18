@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react"
+import Link from "next/link";
 
 export default function NavBar() {
 
@@ -38,9 +39,11 @@ export default function NavBar() {
     }
 
     return (
-        <nav id='navbar' className="flex justify-between w-full bg-white fixed sm:justify-around items-center border-b-[1px] border-[#bcc8d6] transition-all duration-500">
+        <nav id='navbar' className="z-10 flex justify-between w-full bg-white fixed sm:justify-around items-center border-b-[1px] border-[#bcc8d6] transition-all duration-500">
             <div className="z-10 mx-5 inline-block max-w-[120px] sm-max-w-[150px]">
-                <img className="max-w-full h-auto" src="https://i.ibb.co/BNqyTF1/logo.png"/>
+                <Link href='/'>
+                    <img className="cursor-pointer max-w-full h-auto" src="https://i.ibb.co/BNqyTF1/logo.png"/>
+                </Link>
             </div>
             <div ref={myMenu} onClick={handleClickMenu} className="py-4 mx-5 z-10 sm:hidden cursor-pointer">
                 <div className="myBurguer"></div>
