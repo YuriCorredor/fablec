@@ -1,9 +1,31 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 export default function NavBar() {
 
     const [menuOpen, setMenuOpen] = useState(false)
+    const [prevScroll, setPrevScroll] = useState(0);
     const myMenu = useRef(null)
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [prevScroll])
+
+    const handleScroll = () => {
+        const currentScroll = window.scrollY
+        const navbar = document.getElementById('navbar')
+        if (prevScroll > currentScroll) {
+            navbar.style.top = '0'
+        } else {
+            myMenu.current.classList.remove('menuopen')
+            setMenuOpen(false)
+            navbar.style.top = '-74px'
+        }
+        setPrevScroll(currentScroll)
+    }
 
     const handleClickMenu = () => {
         if(!menuOpen) {
@@ -16,7 +38,7 @@ export default function NavBar() {
     }
 
     return (
-        <nav className="flex justify-between sm:justify-around items-center border-b-[1px] border-[#bcc8d6]">
+        <nav id='navbar' className="flex justify-between w-full bg-white fixed sm:justify-around items-center border-b-[1px] border-[#bcc8d6] transition-all duration-500">
             <div className="z-10 mx-5 inline-block max-w-[120px] sm-max-w-[150px]">
                 <img className="max-w-full h-auto" src="https://i.ibb.co/BNqyTF1/logo.png"/>
             </div>
@@ -27,10 +49,10 @@ export default function NavBar() {
                 absolute w-full transition-all duration-500 text-center justify-center bg-white p-8
                 sm:relative sm:text-left sm:top-[0] sm:flex sm:opacity-100 sm:space-x-6 sm:p-0 sm:w-fit sm:mx-5
             `}>
-                <li className="p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >Início</li>
-                <li className="p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >Serviços</li>
-                <li className="p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >Sobre Nós</li>
-                <li className="p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >Faça o seu orçamento</li>
+                <li className="p-2 sm:p-0 md:p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >Início</li>
+                <li className="p-2 sm:p-0 md:p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >Serviços</li>
+                <li className="p-2 sm:p-0 md:p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >Sobre Nós</li>
+                <li className="p-2 sm:p-0 md:p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >Faça o seu orçamento</li>
             </ul>
         </nav>
     )
