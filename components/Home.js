@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 export default function Home() {
     return (
         <motion.div 
-            className="pt-96 sm:pt-28 h-screen flex flex-col justify-center items-center sm:items-start sm:flex-row"
+            className="pt-96 mt-8 sm:mt-0 md:pt-28 h-screen flex flex-col justify-center items-center md:items-start md:flex-row"
             initial={{ x: -1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
