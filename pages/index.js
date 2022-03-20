@@ -6,7 +6,6 @@ export default function index() {
         <>
             <NavBar />
             <Home />
-            <div className="w-full h-[5000px]"></div>
         </>
     )
 }
