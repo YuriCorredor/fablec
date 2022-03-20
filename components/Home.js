@@ -6,7 +6,7 @@ export default function Home() {
             className="pt-96 mt-8 sm:mt-0 md:pt-28 h-screen flex flex-col justify-center items-center md:items-start md:flex-row"
             initial={{ x: -1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
         >
             <div className="flex max-w-lg flex-col items-center">
                 <p className="pb-8 text-[#0fcc7d] font-thin text-xs">ESCOLAS E CRECHES</p>
@@ -16,9 +16,9 @@ export default function Home() {
             </div>
             <motion.img 
                 className="w-auto h-auto" src='einstein.png'
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1, type: 'spring' }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
             />
         </motion.div>
     )
