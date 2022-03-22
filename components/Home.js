@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 export default function Home() {
     return (
         <motion.div 
-            className="pt-96 mt-8 sm:mt-0 md:pt-28 h-screen flex flex-col justify-center items-center md:items-start md:flex-row"
+            className="pt-28 pb-12 sm:pb-40 flex flex-col justify-center items-center md:items-start md:flex-row"
             initial={{ x: -1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -12,7 +12,7 @@ export default function Home() {
                 <p className="pb-8 text-[#0fcc7d] font-thin text-xs">ESCOLAS E CRECHES</p>
                 <h1 className="text-[#2d3748] text-5xl font-semibold p-4 pt-0 text-center sm:text-left">A parceira de mais de 50 Escolas e Creches brasileiras</h1>
                 <p className="text-[#718096] text-lg font-medium p-4 pb-0 pt-0 text-center sm:text-left">Trabalhamos com todos os equipamentos necessários para a sua Escola ou Creche. Entre em contato para fazer parte de nossa equipe.</p>
-                <button className="text-[#2d3748] p-4 px-12 sm:px-18 m-2 sm:mt-12 md:mt-24 bg-[#42ec9a] hover:bg-[#0fcc7d] font-bold rounded-full text-base sm:text-xl">Contate-nos</button>
+                <button className="text-[#2d3748] p-4 px-12 sm:px-18 m-2 mt-12 md:mt-24 bg-[#42ec9a] hover:bg-[#0fcc7d] font-bold rounded-full text-base sm:text-xl">Contate-nos</button>
             </div>
             <motion.img 
                 className="w-auto h-auto" src='einstein.png'
