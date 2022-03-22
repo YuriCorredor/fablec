@@ -42,7 +42,7 @@ const items = [
 export default function Services() {
     return (
         <div id='services' className="flex flex-col mx-2 items-center justify-center overflow-hidden">
-            <h1 className="text-[#2d3748] text-3xl font-semibold text-center p-4 sm:pb-16 pt-0">Vantagens de nossos serviços</h1>
+            <h1 className="text-[#2d3748] text-3xl font-semibold text-center p-4 sm:pb-8 pt-0">Vantagens de nossos serviços</h1>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 p-8 gap-8 w-screen justify-items-center">
                 {items.map((i, index) => <ServiceItem key={index} Icon={i.Icon} title={i.title} description={i.description} />)}
             </div>
