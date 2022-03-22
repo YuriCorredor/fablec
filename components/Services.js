@@ -1,10 +1,10 @@
+
 import ServiceItem from "./ServiceItem"
 import { FiPackage } from "react-icons/fi"
 import { BiConversation } from "react-icons/bi"
 import { MdOutlineSchool } from "react-icons/md"
 import { IoConstructOutline, IoPersonOutline } from "react-icons/io5"
 import { BsPinMap } from "react-icons/bs"
-
 
 const items = [
     {
