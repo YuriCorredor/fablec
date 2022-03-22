@@ -2,7 +2,8 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
     return (
-        <motion.div 
+        <motion.div
+            id="home"
             className="pt-28 pb-12 sm:pb-40 flex flex-col justify-center items-center md:items-start md:flex-row"
             initial={{ x: -1000, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
