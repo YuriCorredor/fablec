@@ -1,5 +1,25 @@
 import { useState, useRef, useEffect } from "react"
-import Link from "next/link";
+import Link from "next/link"
+import NavBarItem from "./NavBarItem"
+
+const items = [
+    {
+        title: 'Início',
+        href: '#home',
+    },
+    {
+        title: 'Serviços',
+        href: '#services',
+    },
+    {
+        title: 'Sobre Nós',
+        href: '#about',
+    },
+    {
+        title: 'Faça o seu orçamento',
+        href: '#contact',
+    },
+]
 
 export default function NavBar() {
 
@@ -52,18 +72,7 @@ export default function NavBar() {
                 absolute w-full transition-all duration-500 text-center justify-center bg-white p-8
                 sm:relative sm:text-left sm:top-[0] sm:flex sm:opacity-100 sm:space-x-6 sm:p-0 sm:w-fit sm:mx-5
             `}>
-                <li className="p-2 sm:p-0 md:p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >
-                    <a href='#home'>Início</a>
-                </li>
-                <li className="p-2 sm:p-0 md:p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >
-                    <a href="#services">Serviços</a>
-                </li>
-                <li className="p-2 sm:p-0 md:p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >
-                    <a href="#about">Sobre Nós</a>
-                </li>
-                <li className="p-2 sm:p-0 md:p-2 text-[#446c44] font-bold hover:text-[#2a582a] cursor-pointer" >
-                    <a href="#contact">Faça o seu orçamento</a>
-                </li>
+                {items.map((i, index) => <NavBarItem key={index} title={i.title} href={i.href} />)}
             </ul>
         </nav>
     )
