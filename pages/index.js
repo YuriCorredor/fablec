@@ -2,6 +2,7 @@ import NavBar from "../components/NavBar"
 import Home from "../components/Home"
 import Services from "../components/Services"
 import Head from "next/head"
+import AboutUs from "../components/AboutUs"
 
 
 export default function index() {
@@ -13,6 +14,7 @@ export default function index() {
             <NavBar />
             <Home />
             <Services />
+            <AboutUs />
         </>
     )
 }
