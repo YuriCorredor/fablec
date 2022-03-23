@@ -87,7 +87,7 @@ export default function AboutUs() {
                         <p>Facilitamos todo o processo de compra, tornando tudo muito simples. Te auxiliamos o tempo todo, da compra até a entrega.</p>
                         <p>Nosso trabalho só termina quando <span className="font-bold">VOCÊ</span> estiver satisfeito.</p>
                         <div className='flex mt-8 items-center justify-center text-center'>
-                            <Button bgColor='#e5f1e2' bgColorHover='#d6d6d6' title='Quero fazer parte' />
+                            <Button bgColor='#e5f1e2' bgColorHover='#d6d6d6' title='Quero receber ofertas' />
                         </div>
                     </div>
                 </motion.div>
