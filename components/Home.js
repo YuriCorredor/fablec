@@ -12,9 +12,7 @@ const outerDivVariants = {
         x: 0, 
         opacity: 1,
         transition: {
-            duration: 0.5,
-            //when: "beforeChildren",
-            //staggerChildren: 0.5 (seconds)
+            duration: 0.5
         }
     }
 }
@@ -65,7 +63,8 @@ export default function Home() {
             </div>
             <motion.img
                 ref={ref}
-                className="w-auto h-auto" src='einstein.png'
+                className="w-auto h-auto" 
+                src='einstein.png'
                 variants={imageVariants}
                 animate={controls}
             />
