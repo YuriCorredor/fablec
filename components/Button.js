@@ -5,8 +5,9 @@ export default function Button({ title, bgColor='#42ec9a', bgColorHover='#0fcc7d
     const buttonVariants = {
         hover: {
             backgroundColor: bgColorHover,
+            scale: 1.1,
             transition: {
-                duration: 0.1
+                duration: 0.2
             }
         }
     }

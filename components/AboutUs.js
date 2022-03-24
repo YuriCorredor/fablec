@@ -13,7 +13,7 @@ const outerDivVariants = {
         y: 0,
         opacity: 1,
         transition: {
-            duration: 0.01,
+            duration: 0,
             when: "beforeChildren",
             staggerChildren: 0.3
         }
@@ -62,7 +62,6 @@ export default function AboutUs() {
         if (!inView && !alreadySeen) {
             controls.start("hidden")
         }
-        console.log(inView)
     }, [controls, inView])
 
     return (
@@ -74,8 +73,8 @@ export default function AboutUs() {
                 animate={controls}
             >
                 <motion.img
-                    className="w-auto h-auto"
-                    width={300}  
+                    className="w-auto h-auto md:place-self-end cursor-pointer"
+                    width={300}
                     src="brain.png" 
                     variants={imgVariants}
                 />

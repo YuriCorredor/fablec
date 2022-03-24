@@ -18,6 +18,13 @@ const outerDivVariants = {
 }
 
 const imageVariants = {
+    hover: {
+        scale: 1.1,
+        transition: { 
+            type: 'spring',
+            stiffness: 300
+        }
+    },
     hidden: {
         scale: 0,
         opacity: 0
@@ -57,15 +64,16 @@ export default function Home() {
                 <p className="pb-8 text-[#0fcc7d] font-thin text-xs">ESCOLAS E CRECHES</p>
                 <h1 className="text-[#2d3748] text-5xl font-semibold p-4 pt-0 text-center sm:text-left">A parceira de mais de 50 Escolas e Creches brasileiras</h1>
                 <p className="text-[#718096] text-lg font-medium p-4 pb-0 pt-0 text-center sm:text-left">Trabalhamos com todos os equipamentos necessários para a sua Escola ou Creche. Entre em contato e faça o seu orçamento, e receberá ofertas incríveis.</p>
-                <div className='lg:mt-24 mt-12 mb-8 md:mb-0'>
+                <div className="flex lg:mt-24 mt-12 mb-8 md:mb-0">
                     <Button title='Contate-nos' />
                 </div>
             </div>
             <motion.img
                 ref={ref}
-                className="w-auto h-auto" 
+                className="w-auto h-auto cursor-pointer" 
                 src='einstein.png'
                 variants={imageVariants}
+                whileHover="hover"
                 animate={controls}
             />
         </motion.div>
