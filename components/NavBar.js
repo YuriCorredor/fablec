@@ -59,7 +59,7 @@ export default function NavBar() {
     }
 
     return (
-        <nav id='navbar' className="z-10 flex justify-between w-full bg-white top-0 left-0 fixed sm:justify-around items-center border-b-[1px] border-[#bcc8d6] transition-all duration-500">
+        <nav id='navbar' className="z-20 flex justify-between w-full bg-white top-0 left-0 fixed sm:justify-around items-center border-b-[1px] border-[#bcc8d6] transition-all duration-500">
             <div className="z-10 mx-5 inline-block max-w-[120px] sm-max-w-[150px]">
                 <Link href='/'>
                     <img className="cursor-pointer max-w-full h-auto" src="https://i.ibb.co/BNqyTF1/logo.png"/>
