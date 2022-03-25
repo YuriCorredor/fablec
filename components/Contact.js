@@ -65,7 +65,7 @@ export default function Contact() {
                     />
                     <label 
                         className="text-center text-[#2d3748] m-5 mb-0 scale-100 p-4 px-12 sm:px-18 bg-[#42ec9a] hover:shadow-2xl hover:scale-110 hover:bg-[#0fcc7d] transition-all font-bold rounded-full text-base sm:text-xl cursor-pointer" 
-                        for="file"
+                        htmlFor="file"
                     >
                         Escolher arquivo
                     </label>
