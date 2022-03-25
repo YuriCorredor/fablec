@@ -3,7 +3,6 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import Button from './Button'
 
-
 const outerDivVariants = {
     hidden: {
         y: 300,
@@ -15,7 +14,7 @@ const outerDivVariants = {
         transition: {
             duration: 0,
             when: "beforeChildren",
-            staggerChildren: 0.3
+            staggerChildren: 0.5
         }
     }
 }
