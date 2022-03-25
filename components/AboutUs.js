@@ -49,17 +49,14 @@ const innerDivVariants = {
 }
 
 export default function AboutUs() {
-
-    const [alreadySeen, setAlreadySeen] = useState(false)
     const { ref, inView } = useInView()
     const controls = useAnimation()
 
     useEffect(() => {
         if (inView) {
             controls.start("visible")
-            setAlreadySeen(true)
         }
-        if (!inView && !alreadySeen) {
+        if (!inView) {
             controls.start("hidden")
         }
     }, [controls, inView])
