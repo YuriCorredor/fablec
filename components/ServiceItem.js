@@ -4,14 +4,14 @@ import { useInView } from "react-intersection-observer"
 
 const outerDivVariants = {
     hidden: {
-        y: 100, 
+        y: 200, 
         opacity: 0
     },
     visible: {
         y: 0,
         opacity: 1,
         transition: {
-            duration: 0.8
+            duration: 1
         }
     },
     hover: {
