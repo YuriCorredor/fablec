@@ -40,11 +40,11 @@ export default function Contact() {
             <div id='contact' className="flex py-24 pb-12 max-w-6xl flex-col md:flex-row">
                 <div>
                     <h1 className="text-[#2d3748] text-3xl font-medium p-8 pb-3 pt-0 text-left">Quer receber ofertas incríveis? Faça o seu orçamento agora mesmo.</h1>
-                    <p className="text-[#718096] text-lg font-medium p-8 pt-0 text-left">Entre em contato com nossa equipe e nos ajude com sua recomendação.</p>
+                    <p className="text-[#718096] text-lg font-medium p-8 pt-0 text-left">Entre em contato conosco e nos ajude com sua recomendação. A sua satisfação é a nossa meta.</p>
                 </div>
-                <div className="flex flex-col sm:min-w-[50%] border-2 items-center p-2 pb-0 mx-4 rounded-xl shadow-2xl transition-all duration-150">
-                    <div className="flex hover:scale-110 m-2 transition-all cursor-pointer">
-                        <ImManWoman className="" color="#446c44" size={100} />
+                <div className="flex flex-col sm:min-w-[50%] border-2 items-center p-2 pb-0 mx-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-200">
+                    <div className="flex hover:scale-110 m-2 transition-all duration-300 cursor-pointer">
+                        <ImManWoman color="#446c44" size={100} />
                         <IoMdMailUnread className="z-10 ml-[-30px] mt-[20px]" color="#0fcc7d" size={100} />
                     </div>
                     <form onSubmit={formik.handleSubmit} className="flex w-full p-5 pt-0 pb-3 flex-col items-center">
@@ -74,7 +74,7 @@ export default function Contact() {
                         <textarea
                             className="scrollbar w-full h-[95px] p-2 m-2 mt-0 outline-none border-2 rounded-md focus:shadow-lg focus:border-[#0fcc7d]"
                             id="content"
-                            placeholder="Preço de toner para impressora LASER JET PRO MFP M428 FDW."
+                            placeholder="Preço de toner para impressora LASER JET PRO."
                             value={formik.values.content}
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}

@@ -61,7 +61,7 @@ export default function Home() {
             animate="visible"
         >
             <div className="flex max-w-lg flex-col items-center">
-                <p className="pb-8 text-[#0fcc7d] font-thin text-xs">ESCOLAS E CRECHES</p>
+                <p className="pb-8 text-[#0fcc7d] font-thin text-xs w-full text-center">ESCOLAS E CRECHES</p>
                 <h1 className="text-[#2d3748] text-5xl font-semibold p-4 pt-0 text-center sm:text-left">A parceira de mais de 50 Escolas e Creches brasileiras</h1>
                 <p className="text-[#718096] text-lg font-medium p-4 pb-0 pt-0 text-center sm:text-left">Trabalhamos com todos os equipamentos necessários para a sua Escola ou Creche. Entre em contato e faça o seu orçamento, e receberá ofertas incríveis.</p>
                 <div className="flex lg:mt-24 mt-12 mb-8 md:mb-0">

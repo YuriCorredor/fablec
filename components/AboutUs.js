@@ -61,7 +61,7 @@ export default function AboutUs() {
     }, [controls, inView])
 
     return (
-        <div id='about' className="bg-[#0fcc7d] mt-8 p-5 pb-0 overflow-hidden" >
+        <div id='about' className="bg-[#0fcc7d] mt-8 p-24 px-8 pb-0 overflow-hidden" >
             <motion.div 
                 className="flex flex-col items-center justify-center md:items-start md:flex-row"
                 ref={ref}
