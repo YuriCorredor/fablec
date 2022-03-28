@@ -84,8 +84,9 @@ export default function Contact() {
 
     return (
         <div className="flex w-full justify-center overflow-hidden">
-            <div ref={ref} id='contact' className="flex py-24 pb-12 max-w-6xl flex-col md:flex-row">
+            <div id='contact' className="flex py-24 pb-12 max-w-6xl flex-col md:flex-row">
                 <motion.div
+                    ref={ref}
                     variants={firstDivVariants}
                     initial="hidden"
                     animate={controls}
