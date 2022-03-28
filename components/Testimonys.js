@@ -18,7 +18,7 @@ const testimonysContents = [
         imgSrc: "testimony3.png"
     },
     {
-        name: "Rodrigo M.",
+        name: "Rodrigo H.",
         statement: "Simplesmente fantástico. Praticamente se acha de tudo com eles. Entrega rápida com opções dos dias para entregar. Parabéns e que continue assim.",
         imgSrc: "testimony4.png"
     }
