@@ -1,9 +1,43 @@
 import { useFormik } from "formik"
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 import Input from "./Input"
 import { ImManWoman } from "react-icons/im"
 import { IoMdMailUnread } from "react-icons/io"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import * as yup from "yup"
+
+const firstDivVariants = {
+    hidden: {
+        y: -350,
+        opacity: 0,
+        transition: {
+            duration: 0.8
+        }
+    },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 1.2
+        }
+    }
+}
+
+const secondDivVariants = {
+    hidden: {
+        y: 350,
+        opacity: 0
+    },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 1.2,
+            delay: 0.3
+        }
+    }
+}
 
 const contactSchema = yup.object().shape({
     name: yup.string().required("Necessário").min(4, "O nome não pode ter menos de 4 letras").max(20, "O nome não pode ter mais de 20 letras"),
@@ -15,6 +49,17 @@ const contactSchema = yup.object().shape({
 export default function Contact() {
 
     const [fileName, setFileName] = useState("")
+    const controls = useAnimation()
+    const { ref, inView } = useInView()
+
+    useEffect(() => {
+        if (inView) {
+            controls.start("visible")
+        }
+        if (!inView) {
+            controls.start("hidden")
+        }
+    }, [controls, inView])
 
     const formik = useFormik({
         initialValues: {
@@ -36,20 +81,29 @@ export default function Contact() {
     }
 
     return (
-        <div className="flex w-full justify-center">
-            <div id='contact' className="flex py-24 pb-12 max-w-6xl flex-col md:flex-row">
-                <div>
+        <div className="flex w-full justify-center overflow-hidden">
+            <div ref={ref} id='contact' className="flex py-24 pb-12 max-w-6xl flex-col md:flex-row">
+                <motion.div
+                    variants={firstDivVariants}
+                    initial="hidden"
+                    animate={controls}
+                >
                     <h1 className="text-[#2d3748] text-3xl font-medium p-8 pb-3 pt-0 text-left">Quer receber ofertas incríveis? Faça o seu orçamento agora mesmo.</h1>
                     <p className="text-[#718096] text-lg font-medium p-8 pt-0 text-left">Entre em contato conosco e nos ajude com sua recomendação. A sua satisfação é a nossa meta.</p>
-                </div>
-                <div className="flex flex-col sm:min-w-[50%] border-2 items-center p-2 pb-0 mx-4 rounded-xl shadow-md hover:shadow-2xl transition-all duration-200">
+                </motion.div>
+                <motion.div
+                    className="flex flex-col sm:min-w-[50%] border-2 items-center p-2 pb-0 mx-4 rounded-xl shadow-md hover:shadow-2xl"
+                    variants={secondDivVariants}
+                    initial="hidden"
+                    animate={controls}
+                >
                     <div className="flex hover:scale-110 m-2 transition-all duration-300 cursor-pointer">
                         <ImManWoman color="#446c44" size={100} />
                         <IoMdMailUnread className="z-10 ml-[-30px] mt-[20px]" color="#0fcc7d" size={100} />
                     </div>
                     <form onSubmit={formik.handleSubmit} className="flex w-full p-5 pt-0 pb-3 flex-col items-center">
                         <Input 
-                            name="Nome"
+                            name="Nome*"
                             id="name"
                             type="text"
                             placeholder="John C. Whethy"
@@ -60,7 +114,7 @@ export default function Contact() {
                             onChange={formik.handleChange}
                         />
                         <Input 
-                            name="Email"
+                            name="Email*"
                             id="email"
                             type="email"
                             placeholder="examplo@email.com"
@@ -79,6 +133,7 @@ export default function Contact() {
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                         />
+                        <p className="text-xs place-self-start font-semibold pt-4 pb-1">Anexe um arquivo:</p>
                         <div className="flex w-full flex-col sm:flex-row">
                             <label 
                                 className="place-self-start text-center min-w-fit text-[#2d3748] font-semibold mb-0 scale-100 p-4 py-2 bg-[#42ec9a] hover:shadow-2xl hover:scale-110 hover:bg-[#0fcc7d] transition-all rounded-full cursor-pointer" 
@@ -104,7 +159,7 @@ export default function Contact() {
                             type="submit" 
                         />
                     </form>
-                </div>
+                </motion.div>
             </div>
         </div>
     )

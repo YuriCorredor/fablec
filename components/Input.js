@@ -12,7 +12,7 @@ export default function Input({ condition, id, name, type, autoComplete="on", pl
                 onBlur={onBlur}
                 onChange={onChange}
             />
-            {condition ? <p className="text-red-600 text-sm font-thin mb-2">{errorMessage}</p> : null}
+            {condition ? <p className="text-red-600 text-xs font-thin mb-2 place-self-start">{errorMessage}</p> : null}
         </>
     )
 }

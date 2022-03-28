@@ -5,6 +5,7 @@ import Head from "next/head"
 import AboutUs from "../components/AboutUs"
 import Contact from "../components/Contact"
 import Footer from "../components/Footer"
+import Testimonys from "../components/Testimonys"
 
 export default function index() {
     return (
@@ -17,6 +18,7 @@ export default function index() {
             <Services />
             <AboutUs />
             <Contact />
+            <Testimonys />
             <Footer />
         </>
     )
