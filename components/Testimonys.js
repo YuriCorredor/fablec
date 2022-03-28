@@ -1,5 +1,22 @@
 import { AiFillStar } from "react-icons/ai"
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 import TestimonyItem from "./TestimonyItem"
+import { useEffect, useState } from "react"
+
+const divVariants = {
+    hidden: {
+        opacity: 0,
+        y: 200
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.8
+        }
+    }
+}
 
 const testimonysContents = [
     {
@@ -27,9 +44,27 @@ const testimonysContents = [
 export default function Testimonys() {
 
     const array5 = Array(5).fill()
+    const { ref, inView } = useInView()
+    const [alreadySeen, setAlreadySeen] = useState(false)
+    const controls = useAnimation()
+
+    useEffect(() => {
+        if (!inView && !alreadySeen) {
+            controls.start("hidden")
+        }
+        if (inView) {
+            controls.start("visible")
+            setAlreadySeen(true)
+        }
+    }, [inView, controls])
 
     return (
-        <div className="flex w-full flex-col justify-center mt-20">
+        <motion.div
+            ref={ref}
+            className="flex w-full flex-col justify-center mt-20"
+            variants={divVariants}
+            animate={controls}
+        >
             <div className="flex flex-col">
                 <div className="flex flex-row justify-center pb-4">
                     {array5.map((_, index) => <AiFillStar key={index} size={35} color="#ffba00"/>)}
@@ -40,6 +75,6 @@ export default function Testimonys() {
             <div className="relative flex flex-wrap w-full mt-8 mb-12 justify-center flex-row">
                 {testimonysContents.map((testimony, index) => <TestimonyItem key={index} name={testimony.name} statement={testimony.statement} imgSrc={testimony.imgSrc} />)}
             </div>
-        </div>
+        </motion.div>
     )
 }
