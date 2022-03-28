@@ -38,7 +38,7 @@ export default function Testimonys() {
                 <p className="text-[#718096] text-lg font-medium p-4 pt-0 text-center">Aqui o que os clientes que adoram os nossos serviços e ofertas dizem sobre nós. Saiba mais!</p>
             </div>
             <div className="relative flex flex-wrap w-full mt-8 mb-12 justify-center flex-row">
-                {testimonysContents.map(testimony => <TestimonyItem name={testimony.name} statement={testimony.statement} imgSrc={testimony.imgSrc} />)}
+                {testimonysContents.map((testimony, index) => <TestimonyItem key={index} name={testimony.name} statement={testimony.statement} imgSrc={testimony.imgSrc} />)}
             </div>
         </div>
     )
