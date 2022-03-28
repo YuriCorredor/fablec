@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
@@ -27,12 +27,14 @@ export default function ServiceItem({ Icon, title, description }) {
 
     const controls = useAnimation()
     const { ref, inView } = useInView()
+    const [alreadySeen, setAlreadySeen] = useState(false)
 
     useEffect(() => {
         if (inView) {
             controls.start("visible")
+            setAlreadySeen(true)
         }
-        if (!inView) {
+        if (!inView && !alreadySeen) {
             controls.start("hidden")
         }
     }, [controls, inView])

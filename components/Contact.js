@@ -49,14 +49,16 @@ const contactSchema = yup.object().shape({
 export default function Contact() {
 
     const [fileName, setFileName] = useState("")
+    const [alreadySeen, setAlreadySeen] = useState(false)
     const controls = useAnimation()
     const { ref, inView } = useInView()
 
     useEffect(() => {
         if (inView) {
             controls.start("visible")
+            setAlreadySeen(true)
         }
-        if (!inView) {
+        if (!inView && !alreadySeen) {
             controls.start("hidden")
         }
     }, [controls, inView])

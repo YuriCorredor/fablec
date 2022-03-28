@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import Button from './Button'
@@ -42,12 +42,14 @@ export default function Home() {
 
     const controls = useAnimation()
     const { ref, inView } = useInView()
+    const [alreadySeen, setAlreadySeen] = useState(false)
 
     useEffect(() => {
         if (inView) {
             controls.start('visible')
+            setAlreadySeen(true)
         }
-        if (!inView) {
+        if (!inView && !alreadySeen) {
             controls.start('hidden')
         }
     }, [controls, inView])

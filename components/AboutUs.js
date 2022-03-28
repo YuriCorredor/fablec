@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import Button from './Button'
@@ -48,14 +48,17 @@ const innerDivVariants = {
 }
 
 export default function AboutUs() {
+
     const { ref, inView } = useInView()
     const controls = useAnimation()
+    const [alreadySeen, setAlreadySeen] = useState(false)
 
     useEffect(() => {
         if (inView) {
             controls.start("visible")
+            setAlreadySeen(true)
         }
-        if (!inView) {
+        if (!inView && !alreadySeen) {
             controls.start("hidden")
         }
     }, [controls, inView])
