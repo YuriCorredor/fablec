@@ -10,8 +10,6 @@ export default async function handler(req, res) {
         const senderName = req.body.name
         const messageContent = req.body.content
 
-        throw new Error()
-
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             port: 587,
@@ -32,6 +30,6 @@ export default async function handler(req, res) {
 
         res.status(200).json({ success: true })
     } catch (error) {
-        res.status(400).json({ error, user })
+        res.status(400).json({ error })
     }
 }
