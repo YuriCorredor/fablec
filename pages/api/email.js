@@ -29,6 +29,6 @@ export default async function handler(req, res) {
 
         res.status(200).json({ success: true, user })
     } catch (error) {
-        res.status(400).json({ error, user })
+        res.status(400).json({ error, "user": user })
     }
 }
