@@ -1,13 +1,16 @@
 const nodemailer = require("nodemailer")
 
+const user = process.env.GMAIL_USER
+const password = process.env.GMAIL_PASSWORD
+
 export default async function handler(req, res) {
     try {
-        const user = process.env.GMAIL_USER
-        const password = process.env.GMAIL_PASSWORD
 
         const sender = req.body.email
         const senderName = req.body.name
         const messageContent = req.body.content
+
+        throw new Error()
 
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
@@ -27,8 +30,8 @@ export default async function handler(req, res) {
             <h2>${messageContent}</h2>`
         })
 
-        res.status(200).json({ success: true, user })
+        res.status(200).json({ success: true })
     } catch (error) {
-        res.status(400).json({ error, user: user })
+        res.status(400).json({ error, user })
     }
 }
