@@ -140,7 +140,7 @@ export default function Contact() {
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                         />
-                        <p className="text-xs place-self-start font-semibold pt-4 pb-1">Os campos com * são obrigatórios</p>
+                        <p className="text-xs place-self-start font-semibold py-1">Os campos com * são obrigatórios</p>
                         {messageStatus == 'sent' ? <p className="font-semibold p-4 pt-8 text-[#0fcc7d]">Mensagem enviada!</p> : 
                         messageStatus == 'loading' ? <ReactLoading className="m-4" type="bubbles" color="#42ec9a" height={60} width={80} /> :
                             <input 
