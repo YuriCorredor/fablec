@@ -6,6 +6,7 @@ import { ImManWoman } from "react-icons/im"
 import { IoMdMailUnread } from "react-icons/io"
 import { useState, useEffect } from "react"
 import * as yup from "yup"
+import ReactLoading from 'react-loading';
 
 const firstDivVariants = {
     hidden: {
@@ -43,12 +44,12 @@ const contactSchema = yup.object().shape({
     name: yup.string().required("Necessário").min(4, "O nome não pode ter menos de 4 letras").max(20, "O nome não pode ter mais de 20 letras"),
     email: yup.string().email("Precisa ser um email válido").required("Necessário"),
     content: yup.string(),
-    file: yup.string()
+    file: yup.mixed()
 })
 
 export default function Contact() {
 
-    const [fileName, setFileName] = useState("")
+    const [messageStatus, setMessageStatus] = useState('idle')
     const [alreadySeen, setAlreadySeen] = useState(false)
     const controls = useAnimation()
     const { ref, inView } = useInView()
@@ -67,20 +68,24 @@ export default function Contact() {
         initialValues: {
             name: "",
             email: "",
-            content: "",
-            file: ""
+            content: ""
         },
         validationSchema: contactSchema,
-        onSubmit: (values) => {
-            console.log(values)
+        onSubmit: async ({ name, email, content }) => {
+            setMessageStatus('loading')
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                }
+            }
+            options.body = JSON.stringify({ name, email, content })
+            const response = await fetch('/api/email', options)
+            if (response.status == 200) setMessageStatus('sent') 
+            else setMessageStatus('idle')
         }
     })
-
-    const handleFileChange = e => {
-        const filePath = e.target.value
-        const splited = filePath.split("\\")
-        setFileName(splited[splited.length - 1])
-    }
 
     return (
         <div className="flex w-full justify-center overflow-hidden">
@@ -135,31 +140,14 @@ export default function Contact() {
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
                         />
-                        <p className="text-xs place-self-start font-semibold pt-4 pb-1">Anexe um arquivo:</p>
-                        <div className="flex w-full flex-col sm:flex-row">
-                            <label 
-                                className="place-self-start text-center min-w-fit text-[#2d3748] font-semibold mb-0 scale-100 p-4 py-2 bg-[#42ec9a] hover:shadow-2xl hover:scale-110 hover:bg-[#0fcc7d] transition-all rounded-full cursor-pointer" 
-                                htmlFor="file"
-                            >
-                                Escolher arquivo
-                            </label>
-                            <p className="pl-2 text-sm font-semibold text-[#2d3748] max-w-[100px] max-h-[40px] overflow-hidden">{fileName}</p>
-                            <input
-                                className="hidden"
-                                id="file"
-                                type="file" 
-                                value={formik.values.file}
-                                onBlur={formik.handleBlur}
-                                onChange={e => {
-                                    formik.handleChange(e)
-                                    handleFileChange(e)
-                                }}
+                        <p className="text-xs place-self-start font-semibold pt-4 pb-1">Os campos com * são obrigatórios</p>
+                        {messageStatus == 'sent' ? <p className="font-semibold p-4 pt-8 text-[#0fcc7d]">Mensagem enviada!</p> : 
+                        messageStatus == 'loading' ? <ReactLoading className="m-4" type="bubbles" color="#42ec9a" height={60} width={80} /> :
+                            <input 
+                                className="place-self-start text-center text-[#2d3748] m-5 ml-0 mb-0 scale-100 p-4 px-12 sm:px-18 bg-[#42ec9a] hover:shadow-2xl hover:scale-110 hover:bg-[#0fcc7d] transition-all font-bold rounded-full text-base sm:text-xl cursor-pointer" 
+                                type="submit" 
                             />
-                        </div>
-                        <input 
-                            className="place-self-start text-center text-[#2d3748] m-5 ml-0 mb-0 scale-100 p-4 px-12 sm:px-18 bg-[#42ec9a] hover:shadow-2xl hover:scale-110 hover:bg-[#0fcc7d] transition-all font-bold rounded-full text-base sm:text-xl cursor-pointer" 
-                            type="submit" 
-                        />
+                        }
                     </form>
                 </motion.div>
             </div>
