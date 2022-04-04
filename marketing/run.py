@@ -37,7 +37,6 @@ def csv_reader(file_name):
     return reader
 
 def attach_files(message, files_names):
-    print(files_names)
     for name in files_names:
         with open(name, 'rb') as file:
             payload = MIMEApplication(file.read(), name=name)
