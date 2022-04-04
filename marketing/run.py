@@ -11,8 +11,10 @@ EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
 TITLE = os.getenv("TITLE")
 
+print("Written by Yuri Corredor")
+
 html_body = ""
-with open("corpo.html", "r", encoding='utf-8') as f:
+with open("body.html", "r", encoding='utf-8') as f:
     html_body = f.read()
 
 def main(csv_file):
@@ -22,7 +24,7 @@ def main(csv_file):
 def send_emails(emails):
     for row in emails:
         try:
-            email = row[5]
+            email = row[0]
         except Exception as exception:
             print(exception)
         if email:
@@ -35,6 +37,7 @@ def csv_reader(file_name):
     return reader
 
 def attach_files(message, files_names):
+    print(files_names)
     for name in files_names:
         with open(name, 'rb') as file:
             payload = MIMEApplication(file.read(), name=name)
@@ -52,11 +55,9 @@ def send_email_to(receiver):
     message['Subject'] = TITLE
 
     message.attach(MIMEText(content, 'html'))
-   
-    '''
-    files_to_attach = ['Linha eletrônicos.jpeg', 'Linha industrial.jpeg', 'Papelaria.jpeg', 'Refrigeradores.jpeg']
-    attach_files(message, files_to_attach)
-    '''
+    
+    files_to_attach = [f for f in os.listdir(f"{path}/attachment")]
+    if files_to_attach: attach_files(message, files_to_attach)
 
     message_to_send = message.as_string()
 
@@ -76,5 +77,5 @@ def send_email_to(receiver):
 path = os.path.dirname(os.path.realpath(__file__))
 csv_files = [f for f in os.listdir(path) if f.endswith('.csv')]
 for csv_file in csv_files:
-    print(f"Lendo {csv_file}...")
+    print(f"Reading {csv_file}...")
     main(csv_file)
